@@ -38,6 +38,7 @@ public class FullGCProblem {
     public static void modelFit() {
         List<CardInfo> infoList = getCardInfoList();
         infoList.forEach(info -> {
+            // 本次内存泄漏问题出在这里， ScheduleFutureTask对象没有被及时回收，大量进入Old区，导致FullGC
             executor.scheduleWithFixedDelay(() -> {
                 info.m();
             }, 2, 3, TimeUnit.SECONDS);
