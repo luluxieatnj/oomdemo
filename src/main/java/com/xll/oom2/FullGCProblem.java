@@ -10,6 +10,8 @@ import java.util.concurrent.TimeUnit;
 
 /**
  *  模拟内存泄漏
+ *  启动时指定堆大小，加快复现FullGC
+ *    -Xmx10m -Xms10m
  *
  */
 public class FullGCProblem {
